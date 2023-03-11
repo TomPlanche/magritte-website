@@ -1,0 +1,32 @@
+/**
+* @file src/components/Home/Home.module.scss
+* @description Home component style.
+* @author Tom Planche
+*/
+
+.home {
+  padding: 0 1rem;
+
+  h1 {
+    font-size: 6rem;
+    font-family: "Nanum Myeongjo", serif;
+
+    text-transform: uppercase;
+  }
+
+  .main {
+    height: calc(100svh - #{$header-height});
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+  }
+}
+
+/**
+ * End of file src/components/Home/Home.module.scss
+ */

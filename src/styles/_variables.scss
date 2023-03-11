@@ -1,0 +1,80 @@
+/**
+ * @file src/SCSS/_variables.scss
+ * @description
+ * @author Tom Planche (github.com/TomPlanche)
+ ********************************************/
+
+/* COLORS */
+$gh-bg: #0D1117;
+$gh-bg-secondary: #161B22;
+$gh-button: #21262D;
+$gh-button-active: #30363D;
+$gh-text: #BED1D9;
+$gh-text-secondary: #8B949E;
+$gh-button-border: #363B42;
+$gh-button-border-active: #8B949E;
+$gh-yellow: #E3B341;
+$gh-blue: #58A6FF;
+$gh-blue-dark: #1F6FEB;
+$gh-red: #f56140;
+$gh-red-active: #F78166;
+$gh-green: #238636;
+$gh-green-active: #2EA043;
+$gh-green-dark: #1d5927;
+$gh-border: #30363D;
+$gh-border-dark: #21262D;
+
+
+$black: #02040a;
+$black-dimed: #02040a75;
+
+$text-dark: #516779;
+$text-dark-dimmed: #51677975;
+
+$text-light: #a5abb2;
+
+$white: #f6f6ec;
+$white-dimmed: #f6f6ec75;
+
+$gray: #bcc5c6;
+$gray-dimmed: #bcc5c675;
+
+$gray-dark: #6c7278;
+$gray-dark-dimmed: #6c727875;
+
+$blue-dark: #13151c;
+
+$red-error: #c52d2a;
+$red-error-dimmed: #c52d2a75;
+
+$accent: #1f6feb;
+$accent-dimmed: #1f6feb75;
+
+$border-color: #30363d;
+
+$button-bg: #1f6feb;
+$button-hover-bg: #388bfd;
+
+$gold: #D0D066;
+$gold-dimmed: #D0D06650;
+
+$form-bg-black: #161b22;
+$form-bg-white: #a5abb2;
+
+$green: #39d353;
+$green-dimmed: #39d35375;
+
+/* Corner radiuses */
+$outer-corner-radius: 2rem;
+$inner-corner-radius: $outer-corner-radius * .75;
+
+/* Paddings */
+$main-padding: 2rem;
+
+/* Heights and Widths*/
+$header-height: 7.5rem;
+$footer-height: 5rem;
+
+/**
+ * End of file src/SCSS/_variables.scss
+ */

@@ -1,0 +1,27 @@
+/**
+ * @file src/index.scss
+ * @description Base style for the whole app.
+ * @author Tom Planche
+ */
+
+@import "styles/reset";
+@import "styles/base";
+@import "styles/variables";
+
+body {
+  background: $white;
+  color: $text-dark;
+
+  *::selection {
+    background: $text-dark;
+    color: $white;
+  }
+
+  &.dark {
+    background: $blue-dark;
+  }
+}
+
+/**
+ * End of file src/index.scss
+ */
