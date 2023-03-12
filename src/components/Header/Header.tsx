@@ -1,6 +1,6 @@
 /**
  * @file src/components/Header/Header.jsx
- * @description Header component.
+ * @date Header component.
  * @author Tom Planche
  */
 
@@ -17,6 +17,11 @@ import {
 } from "gsap";
 
 import CSSRulePlugin from "gsap/CSSRulePlugin";
+
+import {
+  determinateOnHoverFromWhere,
+  fromWhere,
+} from "../../App";
 // END IMPORTS ==========================================================================================   END IMPORTS
 
 gsap.registerPlugin(CSSRulePlugin);
@@ -82,24 +87,10 @@ const Header = (props: HeaderProps) => {
 
     const targetUnderline = target.querySelector(`.${styles.underline}`);
 
-    console.log(`[Header] targetUnderline: ${targetUnderline}`);
-
-    // Find from where the cursor is coming from
-    const { x, y } = target.getBoundingClientRect();
-    const { clientX, clientY } = e;
-
-    const fromLeft = clientX - x;
-    const fromTop = clientY - y;
-    const fromRight = target.offsetWidth - fromLeft;
-    const fromBottom = target.offsetHeight - fromTop;
-
-    const min = Math.min(fromLeft, fromTop, fromRight, fromBottom);
-
-    target.classList.add(styles.underline);
-
-    switch (min) {
-      case fromLeft:
-        console.log(`[Header] Mouse enter from left`);
+    determinateOnHoverFromWhere(
+      e,
+      () => {
+        // console.log(`[Header] Mouse enter from left`);
         gsap.fromTo(targetUnderline, {
           x: '-100%',
           y: '0%',
@@ -110,9 +101,9 @@ const Header = (props: HeaderProps) => {
           opacity: 1,
           duration: 0.25,
         });
-        break;
-      case fromTop:
-        console.log(`[Header] Mouse enter from top`);
+      },
+      () => {
+        // console.log(`[Header] Mouse enter from top`);
         gsap.fromTo(targetUnderline, {
           x: '0%',
           y: '-100%',
@@ -123,9 +114,9 @@ const Header = (props: HeaderProps) => {
           opacity: 1,
           duration: 0.25,
         });
-        break;
-      case fromRight:
-        console.log(`[Header] Mouse enter from right`);
+      },
+      () => {
+        // console.log(`[Header] Mouse enter from right`);
         gsap.fromTo(targetUnderline, {
           x: '100%',
           y: '0%',
@@ -136,9 +127,9 @@ const Header = (props: HeaderProps) => {
           opacity: 1,
           duration: 0.25,
         });
-        break;
-      case fromBottom:
-        console.log(`[Header] Mouse enter from bottom`);
+      },
+      () => {
+        // console.log(`[Header] Mouse enter from bottom`);
         gsap.fromTo(targetUnderline, {
           x: '0%',
           y: '100%',
@@ -149,10 +140,23 @@ const Header = (props: HeaderProps) => {
           opacity: 1,
           duration: 0.25,
         });
-        break;
-      default:
-        console.log(`[Header] Mouse enter from unknown`);
-    }
+      },
+      () => {
+        // console.log(`[Header] Mouse enter from bottom`);
+        gsap.fromTo(targetUnderline, {
+          x: '0%',
+          y: '100%',
+          opacity: 0,
+        }, {
+          x: '0%',
+          y: '0%',
+          opacity: 1,
+          duration: 0.25,
+        });
+      }
+    );
+
+    target.classList.add(styles.underline);
   }
 
   const onMouseLeave = (e: MouseEvent<HTMLAnchorElement>) => {
@@ -163,46 +167,45 @@ const Header = (props: HeaderProps) => {
 
     const targetUnderline = target.querySelector(`.${styles.underline}`);
 
-    // Find from where the cursor is exiting
-    const { x, y } = target.getBoundingClientRect();
-    const { clientX, clientY } = e;
-
-    const fromLeft = clientX - x;
-    const fromTop = clientY - y;
-    const fromRight = target.offsetWidth - fromLeft;
-    const fromBottom = target.offsetHeight - fromTop;
-
-    const min = Math.min(fromLeft, fromTop, fromRight, fromBottom);
-
-    switch (min) {
-      case fromLeft:
-        console.log(`[Header] Mouse leave to left`);
+    determinateOnHoverFromWhere(
+      e,
+      () => {
+        // console.log(`[Header] Mouse leave to left`);
         gsap.to(targetUnderline, {
           x: '-100%',
           y: '0%',
           opacity: 0,
           duration: 0.25,
         });
-        break;
-      case fromTop:
-        console.log(`[Header] Mouse leave to top`);
+      },
+      () => {
+        // console.log(`[Header] Mouse leave to top`);
         gsap.to(targetUnderline, {
           x: '0%',
           y: '-100%',
           opacity: 0,
           duration: 0.25,
         });
-        break;
-      case fromRight:
-        console.log(`[Header] Mouse leave to right`);
+      },
+      () => {
+        // console.log(`[Header] Mouse leave to right`);
         gsap.to(targetUnderline, {
           x: '100%',
           y: '0%',
           opacity: 0,
           duration: 0.25,
         });
-        break;
-      case fromBottom:
+      },
+      () => {
+        // console.log(`[Header] Mouse leave to bottom`);
+        gsap.to(targetUnderline, {
+          x: '0%',
+          y: '100%',
+          opacity: 0,
+          duration: 0.25,
+        });
+      },
+      () => {
         console.log(`[Header] Mouse leave to bottom`);
         gsap.to(targetUnderline, {
           x: '0%',
@@ -210,11 +213,8 @@ const Header = (props: HeaderProps) => {
           opacity: 0,
           duration: 0.25,
         });
-        break;
-      default:
-        console.log(`[Header] Mouse leave to unknown`);
-    }
-
+      }
+    );
   }
 
 

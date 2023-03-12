@@ -1,6 +1,6 @@
 /**
  * @file src/components/Home/Home.jsx
- * @description Home component.
+ * @date Home component.
  * @author Tom Planche
  */
 
@@ -18,6 +18,7 @@ import {AppContext} from "../../App";
 
 // VARIABLES ================================================================================================ VARIABLES
 import styles from './Home.module.scss';
+import PaintingImage from "../PaintingImage/PaintingImage";
 
 // END VARIABLES ======================================================================================= END VARIABLES
 
@@ -35,8 +36,8 @@ const Home = () => {
 
   // Context
   const {
+    getPaintingFromId,
     paintingsData,
-    getPaintingInfo
   } = useContext(AppContext);
 
   // Functions
@@ -69,7 +70,7 @@ const Home = () => {
 
   useEffect(() => {
     if (paintingsData) {
-      console.log(paintingsData);
+      console.log(`paintingsData loaded: ${paintingsData.length} paintings found.`);
     }
   }, [paintingsData]);
 
@@ -88,10 +89,9 @@ const Home = () => {
           René Magritte
         </h1>
 
-        <img
-          ref={image_container_1_ref}
-          src="/src/assets/paintings/rene_magritte-the_lovers_ii.jpg"
-          alt=""
+        <PaintingImage
+          painting={getPaintingFromId('rene_magritte-the_lovers_ii.jpg')}
+          passedRef={image_container_1_ref}
         />
 
         <h1
